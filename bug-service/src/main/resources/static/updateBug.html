@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Bug</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<script type="text/javascript">
+	function updateBug() {
+		//function success(response) {
+			//console.log(response);
+			//return response.json();
+		//}
+		function success(response){
+			if(!response.ok){
+				alert('error happned');
+				return;
+			}//return response.json();
+			
+			else if(response.ok){
+				alert('Bug is updated');
+				console.log(response);
+				return response.json();
+			}
+			
+			
+		}
+		
+		//function errorHandler(error) {
+			//console.log(error);
+		//}
+		//Form Validation
+		//updateBug is the id of updateBug form
+		const updateBug = document.getElementById('updateBug');
+		if (!updateBug.checkValidity()) {
+			alert('form is invalid');
+			return;
+	}
+
+		let id = document.getElementById('bugId').value;
+
+		
+
+		const promise = fetch(('/bug/'+ id), {
+			method : 'PUT',
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			body : JSON.stringify({
+				id:document.getElementById('bugId').value,
+				name : document.getElementById('bugName').value,
+				submittedOn : document.getElementById('date1').value,
+				projectId : document.getElementById('pid').value,
+				status : document.getElementById('Status').value,
+				priority : document.getElementById('Priority').value
+
+			})
+		});
+		promise.then(success);
+	   // promise.then(function(data) {
+	       //console.log(data);
+	   // });
+	    //promise.catch(function(error){
+	    	// console.log(error);
+	   /// });
+	   
+	   
+	
+	}
+</script>
+<body>
+	<div class="nav">
+		<input type="checkbox" id="nav-check">
+		<div class="nav-header">
+			<div class="nav-title">BugTrackingSystem</div>
+		</div>
+		<div class="nav-btn">
+			<label for="nav-check"> <span></span> <span></span> <span></span>
+			</label>
+		</div>
+
+		<div class="nav-links">
+			<a href="index.html">Home</a> <a href="createBug.html">Create</a> <a
+				href="updateBug.html">Update</a> <a href="searchBug.html">Search</a> <a
+				href="contact.html">Contact</a>
+		</div>
+	</div>
+
+
+
+	<h1>Update Bug</h1>
+	<form id="updateBug">
+		<div class="row">
+			<div class="col-5">
+				<label class="lab" for="bid">Bug ID</label>
+			</div>
+			<div class="col-6">
+				<input type="text" required id="bugId" name="bug_id"
+					placeholder="Enter bug ID..">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5">
+				<label>Project ID:</label>
+			</div>
+			<div class="col-6">
+				<input id="pid" type="text">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5">
+				<label class="lab" for="bname">Bug Name</label>
+			</div>
+			<div class="col-6">
+				<input type="text" id="bugName" name="bug_name"
+					placeholder="Enter bug name..">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5">
+				<label for="bugStatus">Enter Bug status :</label>
+			</div>
+			<div class="col-6">
+				<select id="Status">
+					<option value="NEW">NEW</option>
+						<option value="ASSIGNED">ASSIGNED</option>
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+						<option value="VERIFIED">VERIFIED</option>
+						<option value="DEFERRED">DEFERRED</option>
+						<option value="NOT_A_BUG">NOT_A_BUG</option>
+						<option value="REOPEN">REOPEN</option>
+						<option value="RETEST">RETEST</option>
+						<option value="REJECTED">REJECTED</option>
+						<option value="PENDING_RETEST">PENDING_RETEST</option>
+						<option value="DUPLICATE">DUPLICATE</option>
+						<option value="DEFECT">DEFECT</option>
+						<option value="WORK_IN_PROGRESS">WORK_IN_PROGRESS</option>
+						<option value="ISSUE">ISSUE</option>
+						<option value="FIXED">FIXED</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5">
+				<label for="priority">Priority : </label>
+			</div>
+			<div class="col-6">
+				<select id="Priority">
+					<option value="HIGH">HIGH</option>
+					<option value="MEDIUM">MEDIUM</option>
+					<option value="LOW">LOW</option>
+				</select>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5">
+				<label>Submitted On:</label>
+			</div>
+			<div class="col-6">
+				<input type="date" id="date1">
+			</div>
+		</div>
+
+
+	</form>
+
+	<div class="col-6">
+		<input type="submit" onclick="updateBug()" value="Submit">
+	</div>
+
+</body>
+<br>
+<hr class="rounded">
+<br>
+</body>
+</html>

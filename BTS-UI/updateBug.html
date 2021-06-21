@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create and Update Bug</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+            <div class="nav-title">
+                BugTrackingSystem
+            </div>
+        </div>
+        <div class="nav-btn">
+            <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="createBug.html">Create</a>
+            <a href="updateBug.html">Update</a>
+            <a href="search.html">Search</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+      
+<h1>Update Bug</h1>
+<form>
+    <div class="row">
+        <div class="col-5">
+            <label class="lab" for="bid">Bug ID</label>
+        </div>
+        <div class="col-6">
+            <input type="text" id="bugid" name="bug_id" placeholder="Enter bug ID..">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <label for="priority">Priority : </label>
+        </div>
+        <div class="col-6">
+            <select>
+                <option value="option1">HIGH</option>
+                <option value="option2">MEDIUM</option>
+                <option value="option3">LOW</option>
+            </select>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-5">
+            <label>Submitted On:</label>
+        </div>
+        <div class="col-6">
+            <input type="date" id="date1">
+        </div>
+    </div>
+     
+    <div class="col-6">
+        <input type="submit" value="Submit">
+      </div>
+</form>
+
+</body>
+<br>
+    <hr class="rounded">
+    <br>
+

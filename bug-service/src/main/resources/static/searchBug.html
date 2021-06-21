@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>BTS SYSTEMS</title>
+<script type="text/javascript" src="searchBug.js">
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="searchBug.css">
+</head>
+<body> 
+	<div class="nav">
+		<input type="checkbox" id="nav-check">
+		<div class="nav-header">
+			<div class="nav-title">BugTrackingSystem</div>
+		</div>
+		<div class="nav-btn">
+			<label for="nav-check"> <span></span> <span></span> <span></span>
+			</label>
+		</div>
+
+		<div class="nav-links">
+			<a href="index.html">Home</a> <a href="createBug.html">Create</a> <a
+				href="updateBug.html">Update</a> <a href="searchBug.html">Search</a>
+			<a href="contact.html">Contact</a>
+		</div>
+	</div>
+	<h1>Search Bug</h1>
+	<div id="row"> Enter Bug Name :
+	<form id="searchform">
+		<input required id="bugName">
+	</form></div>
+	<button id="Submit" onclick="generate_onebug()">Submit</button>
+
+	<button id="Submit" onclick="generate_table()">Get all Bugs</button>
+	</div>
+	<div id="padding"></div>
+	<div class="table-responsive">
+		<table class="stylishtable"
+			style="border: 2px solid #000000; margin-top: 50px">
+			<thead>
+
+				<td scope="col" style="border: 2px solid #000000;">Name</td>
+				<td scope="col" style="border: 2px solid #000000;">Description
+				</td>
+				<td scope="col" style="border: 2px solid #000000;">Status</td>
+
+
+				<td scope="col" style="border: 2px solid #000000;">Submitted On
+				</td>
+
+				<td scope="col" style="border: 2px solid #000000;">Project ID</td>
+
+
+
+			</thead>
+			<tbody id="bugsTable" style="border: 2px solid #000000">
+
+
+			</tbody>
+
+		</table>
+	</div>
+
+	<div id="padding"></div>
+
+	<div id="button">
+		<button id="col">Download Bug Report</button>
+	</div>
+
+</body>
+</html>

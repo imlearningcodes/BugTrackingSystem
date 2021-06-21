@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Create Bug</title>
+</head>
+
+<script type="text/javascript">
+	function saveBug() {
+		//function success(response) {
+		//console.log(response);
+		//return response.json();
+		//}
+		function success(response) {
+			if (!response.ok) {
+				alert('error happned');
+				return;
+			}
+		 if(response.ok){
+				alert('Bug successfully created');
+				return response.json;
+			}
+
+		}
+		//function errorHandler(error) {
+		//console.log(error);
+		//}
+		const createBug = document.getElementById('createBug');
+		//if(!createBug.checkvalidity()){
+		//		alert('form is invalid');
+		//		return ;
+		//	}
+		const promise = fetch('/bug', {
+			method : 'POST',
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			body : JSON.stringify({
+				name : document.getElementById('bugName').value,
+				status : document.getElementById('Status').value,
+				priority : document.getElementById('Priority').value,
+				submittedOn : document.getElementById('date1').value,
+				module : document.getElementById('module').value,
+				projectId : document.getElementById('pid').value,
+				type : document.getElementById('type').value,
+				description : document.getElementById('desc').value,
+				ETA: document.getElementById('date2').value
+
+			})
+		});
+		promise.then(success);
+		//promise.then(function(data){
+		//console.log(data);
+		///});
+		//promise.catch(function(error){
+		//console.log(error);
+		////});
+	}
+</script>
+<body>
+	<div class="nav">
+		<input type="checkbox" id="nav-check">
+		<div class="nav-header">
+			<div class="nav-title">BugTrackingSystem</div>
+		</div>
+		<div class="nav-btn">
+			<label for="nav-check"> <span></span> <span></span> <span></span>
+			</label>
+		</div>
+
+		<div class="nav-links">
+			<a href="index.html">Home</a> <a href="createBug.html">Create</a> <a
+				href="updateBug.html">Update</a> <a href="searchBug.html">Search</a>
+			<a href="contact.html">Contact</a>
+		</div>
+	</div>
+	<h1>Create Bug</h1>
+	<div class="container">
+		<form id="createBug">
+			<div class="row">
+				<div class="col-5">
+					<label class="lab" for="bname">Bug Name</label>
+				</div>
+				<div class="col-6">
+					<input type="text" class="bn" required id="bugName" name="bug_name"
+						placeholder="Enter bug name..">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<label for="bugStatus ">Enter Bug status :</label>
+				</div>
+				<div class="col-6">
+					<select id="Status">
+						<option value="NEW">NEW</option>
+						<option value="ASSIGNED">ASSIGNED</option>
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+						<option value="VERIFIED">VERIFIED</option>
+						<option value="DEFERRED">DEFERRED</option>
+						<option value="NOT_A_BUG">NOT_A_BUG</option>
+						<option value="REOPEN">REOPEN</option>
+						<option value="RETEST">RETEST</option>
+						<option value="REJECTED">REJECTED</option>
+						<option value="PENDING_RETEST">PENDING_RETEST</option>
+						<option value="DUPLICATE">DUPLICATE</option>
+						<option value="DEFECT">DEFECT</option>
+						<option value="WORK_IN_PROGRESS">WORK_IN_PROGRESS</option>
+						<option value="ISSUE">ISSUE</option>
+						<option value="FIXED">FIXED</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<label for="priority">Priority : </label>
+				</div>
+				<div class="col-6">
+					<select id="Priority">
+						<option value="HIGH">HIGH</option>
+						<option value="MEDIUM">MEDIUM</option>
+						<option value="LOW">LOW</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<label>Submitted On:</label>
+				</div>
+				<div class="col-6">
+					<input type="date" required id="date1">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<label>ETA:</label>
+				</div>
+				<div class="col-6">
+					<input type="date" required id="date2">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<label>Module:</label>
+				</div>
+				<div class="col-6">
+					<input id="module" type="text">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<label>Project ID:</label>
+				</div>
+				<div class="col-6">
+					<input required id="pid" type="text">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<label>Bug Type:</label>
+				</div>
+				<div class="col-6">
+					<select id="type">
+						<option value="OPERATIONAL">OPERATIONAL</option>
+						<option value="FUNCTIONAL">FUNCTIONAL</option>
+						<option value="RUNTIME">RUNTIME</option>
+						<option value="LOOP">LOOP</option>
+					</select>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-5">
+					<label>description:</label>
+				</div>
+				<div class="col-6">
+					<input type="text" placeholder="Enter not more than 100 words" id="desc">
+				</div>
+			</div>
+			<div class="col-6">
+				<input type="submit" onclick="saveBug()" value="Submit">
+			</div>
+		</form>
+	</div>
+	<br>
+	<hr class="rounded">
+	<br>
+	<footer class="page-footer font-small blue">
+		<div class="footer-copyright text-center py-3">
+			<small>© 2021 Copyright: EDITH</small>
+		</div>
+	</footer>
+</body>
+</html>
